@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Bites Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .video-card {
+            position: relative;
+        }
+
+        .btn-like,
+        .btn-comment {
+            transition: background-color 0.3s ease, color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .btn-like:hover,
+        .btn-comment:hover {
+            transform: scale(1.05);
+            /* Slightly enlarge on hover */
+            background-color: #5c6bc0;
+            color: white;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .btn-delete,
+        .btn-edit {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+        }
+
+        .btn-delete:hover,
+        .btn-edit:hover {
+            background-color: #c82333;
+        }
+
+        .btn-edit:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Knowledge Bites</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="text-center">
+        <div class="container">
+            <h1 class="display-4">Knowledge Bites</h1>
+            <p class="lead">Welcome to my education-focused blog!
+                Here, I share valuable insights, tips, and resources to help students,
+                educators, and lifelong learners thrive.</p>
+            <a href="#news" class="btn">Discover More</a>
+        </div>
+    </header>
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">How AI Works</h2>
+            <p class="text-center mb-5">This series of short videos will
+                introduce you to how artificial intelligence works and why it
+                matters.</p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe width="864" height="486" src="https://www.youtube.com/embed/Ok-xpKjKp2g" title="How AI Works" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">How AI Works</p>
+                            <button class="btn btn-like me-2" onclick="likeVideo('likeCount1')">Like (<span id="likeCount1">0</span>)</button>
+                            <button class="btn btn-comment" onclick="toggleCommentSection('commentSection1')">Comment</button>
+                            <div id="commentSection1" class="comment-section" style="display: none;">
+                                <textarea class="form-control mb-2" id="commentText1" rows="3" placeholder="Write your comment"></textarea>
+                                <button class="btn btn-success w-100" onclick="submitComment('commentText1', 'comments1')">Submit Comment</button>
+                                <div id="comments1" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/OeU5m6vRyCk" title="What is Machine Learning?" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">What is Machine Learning</p>
+                            <button class="btn btn-like me-2" onclick="likeVideo('likeCount2')">Like (<span id="likeCount2">0</span>)</button>
+                            <button class="btn btn-comment" onclick="toggleCommentSection('commentSection2')">Comment</button>
+                            <div id="commentSection2" class="comment-section" style="display: none;">
+                                <textarea class="form-control mb-2" id="commentText2" rows="3" placeholder="Write your comment"></textarea>
+                                <button class="btn btn-success w-100" onclick="submitComment('commentText2', 'comments2')">Submit Comment</button>
+                                <div id="comments2" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Exploring Generative AI</h2>
+            <p class="text-center mb-5">Generative AI may seem magical
+                and mysterious, but it's a lot easier to understand when you break it
+                down to four core components.</p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/JO9MgO1Zp3E" title="Generative AI: Input & Pre-training" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Generative AI: Input and Pretraining</p>
+                            <button class="btn btn-like me-2" onclick="likeVideo('likeCount3')">Like (<span id="likeCount3">0</span>)</button>
+                            <button class="btn btn-comment" onclick="toggleCommentSection('commentSection3')">Comment</button>
+                            <div id="commentSection3" class="comment-section" style="display: none;">
+                                <textarea class="form-control mb-2" id="commentText3" rows="3" placeholder="Write your comment"></textarea>
+                                <button class="btn btn-success w-100" onclick="submitComment('commentText3', 'comments3')">Submit Comment</button>
+                                <div id="comments3" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/s1fhxAVpYx8" title="Generative AI: Storage & Embeddings" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Generative AI: Storage and Embeddings</p>
+                            <button class="btn btn-like me-2" onclick="likeVideo('likeCount4')">Like (<span id="likeCount4">0</span>)</button>
+                            <button class="btn btn-comment" onclick="toggleCommentSection('commentSection4')">Comment</button>
+                            <div id="commentSection4" class="comment-section" style="display: none;">
+                                <textarea class="form-control mb-2" id="commentText4" rows="3" placeholder="Write your comment"></textarea>
+                                <button class="btn btn-success w-100" onclick="submitComment('commentText4', 'comments4')">Submit Comment</button>
+                                <div id="comments4" class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5" id="contact">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form class="row g-3 mx-auto" style="max-width: 600px;">
+                <div class="col-12">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces">
+                </div>
+                <div class="col-12">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="col-12">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Write your message" required></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success w100">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Knowledge Bites. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+    </footer>
+    <script>
+        // Like Button Functionality
+        function likeVideo(likeCountId) {
+            const likeCountElement = document.getElementById(likeCountId);
+            let currentLikes = parseInt(likeCountElement.textContent);
+            likeCountElement.textContent = currentLikes + 1;
+        }
+        // Comment Section Toggle
+        function toggleCommentSection(commentSectionId) {
+            const commentSection = document.getElementById(commentSectionId);
+            if (commentSection.style.display === 'none') {
+                commentSection.style.display = 'block';
+            } else {
+                commentSection.style.display = 'none';
+            }
+        }
+        // Submit Comment
+        function submitComment(commentTextId, commentsId) {
+            const commentText = document.getElementById(commentTextId).value;
+            if (commentText.trim() !== "") {
+                const commentsSection = document.getElementById(commentsId);
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment-item');
+                newComment.innerHTML = `<p>${commentText}</p>
+ <button class="btn btn-edit" onclick="editComment(this)">Edit</button>
+ <button class="btn btn-delete" onclick="deleteComment(this)">Delete</button>`;
+                commentsSection.appendChild(newComment);
+                document.getElementById(commentTextId).value = ""; // Clear the textarea
+            }
+        }
+        // Delete Comment
+        function deleteComment(button) {
+            const commentItem = button.parentElement;
+            commentItem.remove();
+        }
+        // Edit Comment
+        function editComment(button) {
+            const commentItem = button.parentElement;
+            const commentText = commentItem.querySelector('p').textContent;
+            const newCommentText = prompt("Edit your comment:", commentText);
+            if (newCommentText !== null) {
+                commentItem.querySelector('p').textContent = newCommentText;
+            }
+        }
+    </script>
+</body>
+
+</html>
